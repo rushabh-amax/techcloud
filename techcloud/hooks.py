@@ -5,6 +5,23 @@ app_description = "techcloud erpnext theme\'s"
 app_email = "amax@gmail.com"
 app_license = "mit"
 
+
+app_include_css = ["theme.bundle.css" , "assets/techcloud/css/css-rtl/translatons.ar_eg.css"]
+app_include_js = ["theme.bundle.js"]
+
+# hooks.py
+
+# hooks.py
+after_login = ["techcloud.utils.set_default_redirect"]
+
+
+# ]
+web_include_js = [
+    "theme.bundle.js",
+    "assets/hims/js/login.bundle.js"
+]
+
+home_page = "/modules"
 # Apps
 # ------------------
 
@@ -15,7 +32,7 @@ app_license = "mit"
 # 	{
 # 		"name": "techcloud",
 # 		"logo": "/assets/techcloud/logo.png",
-# 		"title": "Techcloud",
+# 		"title": "techcloud",
 # 		"route": "/techcloud",
 # 		"has_permission": "techcloud.api.permission.has_app_permission"
 # 	}
@@ -242,3 +259,16 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+override_whitelisted_methods = {
+    "frappe.core.doctype.user.user.switch_theme": "techcloud.override.switch_theme"
+}
+
+fixtures = [
+    {
+        "dt": "Property Setter",
+        "filters": [
+            ["doc_type", "=", "User"],
+            ["field_name", "=", "desk_theme"]
+        ]
+    }
+]
