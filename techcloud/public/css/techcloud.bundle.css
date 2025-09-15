@@ -43,7 +43,7 @@ h1,h2,h3,h4,h5,h6{
 
 body{
   background: var(--body_clr) !important;
-  background-size: cover;
+  /* background-size: cover; */
 }
 [data-theme=techcloud]{
 }

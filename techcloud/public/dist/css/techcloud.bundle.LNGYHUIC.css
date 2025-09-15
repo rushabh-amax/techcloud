@@ -33,7 +33,6 @@ h6 {
 }
 body {
   background: var(--body_clr) !important;
-  background-size: cover;
 }
 [data-theme=techcloud] {
 }
@@ -328,7 +327,7 @@ body {
   scale: .85;
   z-index: 1;
 }
-[data-theme=baps] #nav-modules-link {
+[data-theme=techcloud] #nav-modules-link {
   font-weight: 500;
   color: var(--primary_clr) !important;
 }
@@ -386,4 +385,4 @@ body {
   border: 1px solid #ccc;
   vertical-align: middle;
 }
-/*# sourceMappingURL=techcloud.bundle.NREJK4L6.css.map */
+/*# sourceMappingURL=techcloud.bundle.LNGYHUIC.css.map */

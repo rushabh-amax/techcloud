@@ -33,7 +33,6 @@ h6 {
 }
 body {
   background: var(--body_clr) !important;
-  background-size: cover;
 }
 [data-theme=techcloud] {
 }
@@ -386,4 +385,4 @@ body {
   border: 1px solid #ccc;
   vertical-align: middle;
 }
-/*# sourceMappingURL=techcloud.bundle.5NAPWPWL.css.map */
+/*# sourceMappingURL=techcloud.bundle.EEBVFJ34.css.map */
