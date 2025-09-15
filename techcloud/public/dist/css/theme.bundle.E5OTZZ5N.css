@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
 
-/* ../../../../../../tmp/tmp-172295-wcmvwdWNR9l2/1993dc1a148b/techcloud.bundle.css */
+/* ../../../../../../tmp/tmp-49860-WOkvpKcRcb4J/1994d32c1311de/techcloud.bundle.css */
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -62,47 +62,51 @@ body {
   height: -moz-fit-content !important;
   height: fit-content !important;
 }
-.navbar {
+[data-theme=techcloud] .navbar {
   height: var(--classic_height);
 }
-.search-bar .awesomplete {
+[data-theme=techcloud] .search-bar .awesomplete {
   height: calc(var(--classic_height) - 25px);
   padding: .45em !important;
   border-radius: .5em !important;
   background: var(--gradient) !important;
   border: 1.4px solid #e7e7e7bf;
 }
-.search-bar .awesomplete input {
+[data-theme=techcloud] .search-bar .awesomplete input {
   border-radius: inherit !important;
   height: 100% !important;
   background: white !important;
 }
-.navbar ul.navbar-nav li.nav-item {
+[data-theme=techcloud] .navbar ul.navbar-nav li.nav-item {
   height: 40px;
   aspect-ratio: 1;
 }
-.navbar ul.navbar-nav li.nav-item:has(button[aria-label="Help Dropdown"]) {
+[data-theme=techcloud] .navbar ul.navbar-nav li.dropdown-navbar-user {
+  height: calc(var(--classic_height) - 30px) !important;
+  aspect-ratio: 1;
+}
+[data-theme=techcloud] .navbar ul.navbar-nav li.nav-item:has(button[aria-label="Help Dropdown"]) {
   width: 45px !important;
 }
-.navbar ul.navbar-nav li.nav-item:has(button[aria-label="User Menu"]) span {
+[data-theme=techcloud] .navbar ul.navbar-nav li.nav-item:has(button[aria-label="User Menu"]) span {
   height: 100%;
   width: 100%;
 }
-.navbar ul.navbar-nav > li.nav-item > button {
+[data-theme=techcloud] .navbar ul.navbar-nav > li.nav-item > button {
   height: 100%;
   width: 100%;
   text-align: center;
 }
-.navbar ul.navbar-nav > li.nav-item.show {
+[data-theme=techcloud] .navbar ul.navbar-nav > li.nav-item.show {
   transition: 250ms ease all;
 }
-.navbar .nav-item:first-child {
+[data-theme=techcloud] .navbar .nav-item:first-child {
   margin-left: unset !important;
 }
-.avatar .standard-image {
+[data-theme=techcloud] .avatar .standard-image {
   border-radius: .5em;
 }
-#navbar-breadcrumbs {
+[data-theme=techcloud] #navbar-breadcrumbs {
   background: white;
   padding-block: .5em;
   display: flex;
@@ -112,56 +116,70 @@ body {
   margin: 0;
   list-style: none;
 }
-#navbar-breadcrumbs li {
+[data-theme=techcloud] #navbar-breadcrumbs a:before {
+  content: "/";
+  display: inline-block;
+  margin-right: 3px !important;
+  font-size: 12px;
+}
+[data-theme=techcloud] #navbar-breadcrumbs a {
+  margin-right: unset !important;
+  display: flex;
+  align-items: center;
+  gap: .35em;
+  flex-direction: row-reverse;
+  justify-content: start;
+}
+[data-theme=techcloud] #navbar-breadcrumbs li {
   display: flex;
   align-items: center;
 }
-.sidebar.expanded {
+[data-theme=techcloud] .sidebar.expanded {
   width: 200px;
   transition: width 0.3s ease;
 }
-[data-title=Public] {
+[data-theme=techcloud] [data-title=Public] {
   padding-inline: .25em;
 }
-[data-page-route=Workspaces] .layout-main .layout-side-section {
+[data-theme=techcloud] [data-page-route=Workspaces] .layout-main .layout-side-section {
   padding-right: 15px;
   width: 200px;
   overflow-x: hidden;
 }
-.standard-actions {
+[data-theme=techcloud] .standard-actions {
   height: 50px;
 }
-.layout-main-section.frappe-card {
+[data-theme=techcloud] .layout-main-section.frappe-card {
   --card-bg:transparent;
   background-color: var(--card-bg);
 }
-.sidebar-item-container {
+[data-theme=techcloud] .sidebar-item-container {
   margin-block: .25em;
   margin-left: 0px;
 }
-.sidebar-item-container .desk-sidebar-item {
+[data-theme=techcloud] .sidebar-item-container .desk-sidebar-item {
   padding: 1em 0em;
   border-radius: 1em !important;
   transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1) scale;
   position: relative;
 }
-.desk-sidebar-item:has(+ .sidebar-child-item) .drop-icon {
+[data-theme=techcloud] .desk-sidebar-item:has(+ .sidebar-child-item) .drop-icon {
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
-.standard-sidebar-item.selected,
-.standard-sidebar-item.active.selected {
-  background: #c78457left 1 top 50%f !important;
+[data-theme=techcloud] .standard-sidebar-item.selected,
+[data-theme=techcloud] .standard-sidebar-item.active.selected {
+  background: #c784571f !important;
   color: var(--active_txt_clr);
   overflow: unset;
 }
-.grid-heading-row {
+[data-theme=techcloud] .grid-heading-row {
   --gray-600:#a06800;
   --subtle-fg:#ffe9cd;
 }
-.list-row-head {
+[data-theme=techcloud] .list-row-head {
   --gray-600:#a06800;
   --subtle-fg:#ffe9cd;
   color: var(--gray-600);
@@ -206,18 +224,18 @@ body {
 .grid-row > .row .col:last-child {
   padding-inline: 2em;
 }
-.form-tabs-list .form-tabs .nav-item .nav-link.active {
+[data-theme=techcloud] .form-tabs-list .form-tabs .nav-item .nav-link.active {
   --_primary-bg-color:#a06800 !important;
   --text-color:var(--_primary-bg-color);
   font-weight: 500;
   border-bottom: unset;
   color: var(--text-color);
 }
-.frappe-control[data-fieldtype=Select].form-group .select-icon.xs {
+[data-theme=techcloud] .frappe-control[data-fieldtype=Select].form-group .select-icon.xs {
   top: 15px;
   right: 10px;
 }
-.input-with-feedback .form-control span {
+[data-theme=techcloud] .input-with-feedback .form-control span {
   top: 6px !important;
 }
 .form-control:focus {
@@ -225,23 +243,23 @@ body {
   border-color: var(--gray-500);
   box-shadow: 0 0 0 2px rgba(196, 196, 226, 0.25);
 }
-input[type=text],
-[data-fieldname=status] .input-xs,
-select,
-.input-xs:not(input[type="checkbox"]),
-[data-fieldname=password],
-.like-disabled-input {
+[data-theme=techcloud] input[type=text],
+[data-theme=techcloud] [data-fieldname=status] .input-xs,
+[data-theme=techcloud] select,
+[data-theme=techcloud] .input-xs:not(input[type="checkbox"]),
+[data-theme=techcloud] [data-fieldname=password],
+[data-theme=techcloud] .like-disabled-input {
   height: 50px !important;
 }
-.like-disabled-input a,
-.like-disabled-input,
+[data-theme=techcloud] .like-disabled-input a,
+[data-theme=techcloud] .like-disabled-input,
 [data-fieldname=root_type] {
   line-height: 2;
 }
-.layout-main-section {
+[data-theme=techcloud] .layout-main-section {
   margin-top: .5em;
 }
-.page-actions {
+[data-theme=techcloud] .page-actions {
   align-items: center;
   padding-right: 1em;
 }
@@ -287,23 +305,23 @@ select,
 .number-widget-box .number {
   --text-2xl: var(--text-3xl);
 }
-[data-theme=baps] .onboarding-step svg.es-icon {
+[data-theme=techcloud] .onboarding-step svg.es-icon {
   --icon-stroke: var(--success);
   color: var(--icon-stroke) !important;
 }
-[data-theme=baps] .widget.onboarding-widget-box .widget-body .onboarding-step.skipped {
+[data-theme=techcloud] .widget.onboarding-widget-box .widget-body .onboarding-step.skipped {
   color: #ff6565;
   background-color: #ffd2d2;
 }
-[data-theme=baps] .widget.onboarding-widget-box .widget-body .onboarding-step.complete {
+[data-theme=techcloud] .widget.onboarding-widget-box .widget-body .onboarding-step.complete {
   color: #036100;
   background-color: #c9e0c8;
 }
-[data-theme=baps] .onboarding-step.skipped svg.es-icon {
+[data-theme=techcloud] .onboarding-step.skipped svg.es-icon {
   --icon-stroke: #e03636 !important;
   color: var(--icon-stroke) !important;
 }
-[data-theme=baps] .widget-control.indicator-pill.no-indicator-dot {
+[data-theme=techcloud] .widget-control.indicator-pill.no-indicator-dot {
   position: absolute;
   bottom: 0;
   right: .25em;
@@ -318,7 +336,7 @@ select,
   flex-wrap: wrap !important;
 }
 .module-icon .icon-xl {
-  --xl: 43px !important;
+  --xl: 60px !important;
   width: var(--xl) !important;
   height: var(--xl) !important;
 }
@@ -369,5 +387,5 @@ select,
   vertical-align: middle;
 }
 
-/* ../../../../../../tmp/tmp-172295-wcmvwdWNR9l2/techcloud/techcloud/public/css/theme.bundle.css */
-/*# sourceMappingURL=theme.bundle.5VR3Q3JW.css.map */
+/* ../../../../../../tmp/tmp-49860-WOkvpKcRcb4J/techcloud/techcloud/public/css/theme.bundle.css */
+/*# sourceMappingURL=theme.bundle.E5OTZZ5N.css.map */
