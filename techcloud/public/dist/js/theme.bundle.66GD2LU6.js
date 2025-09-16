@@ -116,7 +116,7 @@
         position: "absolute",
         bottom: "0",
         height: "4px",
-        background: "orange",
+        background: "#AFDDFF",
         borderRadius: "1em 1em 0em 0em",
         transition: "transform 200ms ease, width 200ms ease",
         left: "0",
@@ -312,4 +312,4 @@
     });
   });
 })();
-//# sourceMappingURL=theme.bundle.46ML4Y4H.js.map
+//# sourceMappingURL=theme.bundle.66GD2LU6.js.map

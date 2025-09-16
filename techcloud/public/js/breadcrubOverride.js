@@ -6,6 +6,7 @@
 function relocateBreadcrumbs() {
     const sticky = document.querySelector(".sticky-top");
     const header = sticky?.querySelector("header.navbar");
+
     const breadcrumbs = document.getElementById("navbar-breadcrumbs");
 
     if (sticky && header && breadcrumbs) {
