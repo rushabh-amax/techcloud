@@ -50,9 +50,19 @@
 
 
                      // At the very top, inside tabs_html container or right after $(page.body).html(tabs_html)
+
                 const toggleHtml = $(`
-                <div class="mb-3" style="width:100%; display:flex; align-items:center; gap:8px; margin-bottom:1em;">
-                    <label for="user-theme-toggle" style="font-weight:500; cursor:pointer;">Enable Custom Theme for Me Only</label>
+                <div class="mb-3 theme-toggle-container" style="
+                width:100%;
+                gap:8px; 
+                margin-bottom:1em;
+                display: flex;
+                align-items: center;
+                padding-block: 1em;
+                justify-content: space-between;
+                border-bottom: 1.4px solid var(--control-bg);
+                ">
+                    <label for="user-theme-toggle" style="margin-bottom: unset; font-weight:500; cursor:pointer;">Only For Me</label>
                     <input type="checkbox" id="user-theme-toggle">
                 </div>
                 `);
@@ -65,7 +75,7 @@
 
                 // If enabled, apply all user-selected preferences immediately
                 if (themeEnabled) {
-                    const customColor = frappe.defaults.get_user_default("custom_solid_color") || "#06A7CB";
+                    const customColor = frappe.defaults.get_user_default("custom_solid_color") || "whitesmoke";
                     applyCustomColor(customColor);
 
                     const headingFont = frappe.defaults.get_user_default("heading_font") || "Poppins";
@@ -78,7 +88,7 @@
                     if (currentTheme) {
                         $('.theme-card.selected').removeClass('selected').find('.preview-check').hide();
                         $(`.theme-card div[data-theme="${currentTheme}"]`).closest('.theme-card')
-                            .addClass('selected').find('.preview-check').show().css("color", "#06A7CB");
+                            .addClass('selected').find('.preview-check').show().css("color", "whitesmoke");
                     }
                 }
 
@@ -96,7 +106,7 @@
                         callback: function() {
                             if (enabled) {
                                 // Apply everything user-selected
-                                const color = $('#custom-solid-color').val() || "#06A7CB";
+                                const color = $('#custom-solid-color').val() || "whitesmoke";
                                 applyCustomColor(color);
 
                                 const headingFont = $('#heading-font').val() || "Poppins";
@@ -108,7 +118,7 @@
                                 if (currentTheme) {
                                     $('.theme-card.selected').removeClass('selected').find('.preview-check').hide();
                                     $(`.theme-card div[data-theme="${currentTheme}"]`).closest('.theme-card')
-                                        .addClass('selected').find('.preview-check').show().css("color", "#06A7CB");
+                                        .addClass('selected').find('.preview-check').show().css("color", "whitesmoke");
                                 }
                             } else {
                                 // Revert to default/light theme for this user
@@ -251,7 +261,7 @@
 
         // Selected tick
         if (theme_switcher.current_theme === t.name) {
-            themeItem.find(".preview-check").show().css("color", "#06A7CB");
+            themeItem.find(".preview-check").show().css("color", "whitesmoke");
             themeItem.addClass("selected");
         }
 
@@ -268,7 +278,7 @@
             themesContainer.find(".selected")
                 .removeClass("selected")
                 .find(".preview-check").hide();
-            themeItem.find(".preview-check").show().css("color", "#06A7CB");
+            themeItem.find(".preview-check").show().css("color", "whitesmoke");
             themeItem.addClass("selected");
         });
 
@@ -288,7 +298,7 @@ solidContainer.css({
 solidContainer.prepend(`
     <div class="mb-3" style="width: 100%; margin-bottom: 1em;">
         <label>Custom Color</label>
-        <input type="color" id="custom-solid-color" value="#06A7CB" style="width: 60px; height: 34px; border: none; cursor: pointer;">
+        <input type="color" id="custom-solid-color" value="#EDEDED" style="width: 60px; height: 34px; border: none; cursor: pointer;">
     </div>
 `);
 // ---------------------------
@@ -391,7 +401,7 @@ themes.filter(t => t.solid).forEach((t) => {
 
     // Preselect current
     if (theme_switcher.current_theme === t.name) {
-        solidItem.find(".preview-check").show().css("color", "#06A7CB");
+        solidItem.find(".preview-check").show().css("color", "whitesmoke");
         solidItem.addClass("selected");
     }
 
@@ -403,7 +413,7 @@ themes.filter(t => t.solid).forEach((t) => {
             .removeClass("selected")
             .find(".preview-check").hide();
 
-        solidItem.find(".preview-check").show().css("color", "#06A7CB");
+        solidItem.find(".preview-check").show().css("color", "whitesmoke");
         solidItem.addClass("selected");
     });
 
@@ -426,7 +436,7 @@ function hexToRGBA(hex, alpha) {
 }
 
 // Get saved custom color from user defaults (or fallback)
-const savedCustomColor = frappe.defaults.get_user_default("custom_solid_color") || "#06A7CB";
+const savedCustomColor = frappe.defaults.get_user_default("custom_solid_color") || "whitesmoke";
 
 // Set initial value of color picker
 $('#custom-solid-color').val(savedCustomColor);
@@ -473,7 +483,7 @@ function getContrastColor(hex) {
     const luminance = (0.299*r + 0.587*g + 0.114*b)/255;
 
     // Return black for light bg, white for dark bg
-    return luminance > 0.6 ? '#000000' : '#ffffff';
+    return luminance > 0.6 ? '#EDEDED' : '#000';
 }
 
 // Example usage
@@ -504,7 +514,7 @@ $('#custom-solid-color').on('change', function() {
 });
 
 // Get saved custom color from user defaults (or fallback)
-// const savedCustomColor = frappe.defaults.get_user_default("custom_solid_color") || "#06A7CB";
+// const savedCustomColor = frappe.defaults.get_user_default("custom_solid_color") || "whitesmoke";
 
 // // Set initial value of color picker
 // $('#custom-solid-color').val(savedCustomColor);
@@ -594,7 +604,6 @@ fontsContainer.html(`
     </div>
 `);
 
-// Load saved defaults
 const savedHeadingFont = frappe.defaults.get_user_default("heading_font") || "Poppins";
 const savedParagraphFont = frappe.defaults.get_user_default("paragraph_font") || "Poppins";
 
@@ -614,14 +623,12 @@ function saveUserDefault(key, value) {
         method: "techcloud.api.user.save_font_preference",
          args: { key, value },
         callback: function() {
-            // ensure user_preferences exists
             frappe.boot.user.user_preferences = frappe.boot.user.user_preferences || {};
             frappe.boot.user.user_preferences[key] = value;
         }
     });
 }
 
-// Bind change events
 $('#heading-font').on('change', function() {
     const font = $(this).val();
     loadGoogleFont(font);
@@ -640,11 +647,10 @@ $('#paragraph-font').on('change', function() {
 
 
 function revertToDefaultTheme() {
-    // Remove any selected theme
     $('.theme-card.selected').removeClass('selected').find('.preview-check').hide();
 
     // Reset primary color to default
-    const defaultColor = "#06A7CB"; // or whatever your default is
+    const defaultColor = "whitesmoke"; 
     document.documentElement.style.setProperty('--primary', defaultColor);
     document.documentElement.style.setProperty('--brand-color', defaultColor);
     document.documentElement.style.setProperty('--plyr-color-main', defaultColor);
@@ -653,13 +659,10 @@ function revertToDefaultTheme() {
     document.documentElement.style.setProperty('--primary-light', 'rgba(6,167,203,0.2)');
     document.documentElement.style.setProperty('--primary-lighter', 'rgba(6,167,203,0.07)');
 
-    // Reset button colors
     document.documentElement.style.setProperty('--control-bg', defaultColor);
 
-    // Reset text color
     document.documentElement.style.setProperty('--text-color', '#ffffff');
 
-    // Reset fonts if needed
     $('h1, h2, h3, h4, h5, h6, p, span, div').css('font-family', '');
 }
 

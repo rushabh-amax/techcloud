@@ -48,6 +48,49 @@ body{
 [data-theme=techcloud]{
 }
 
+/* RED THEME */
+[data-theme="red"] {
+    --navbar_searchbar_radius: 1em;
+    --body_clr: #fff5f5;
+    --control-bg: #ffcccc;
+    --classic_height: 80px;
+
+    --clr1: 255, 94, 77;    /* FF5E4D */
+    --clr2: 255, 255, 255;  /* White */
+    --clr3: 204, 0, 0;      /* Dark Red */
+
+    --gradient: linear-gradient(
+        to right,
+        rgba(var(--clr2), 1) -10%,
+        rgba(var(--clr1), 0.25),
+        rgba(var(--clr2), 1),
+        rgba(var(--clr3), 0.25),
+        rgba(var(--clr2), 1) 110%
+    );
+}
+
+/* GREEN THEME */
+[data-theme="green"] {
+    --navbar_searchbar_radius: 1em;
+    --body_clr: #f5fff5;
+    --control-bg: #ccffcc;
+    --classic_height: 80px;
+
+    --clr1: 102, 204, 102;  /* 66CC66 */
+    --clr2: 255, 255, 255;  /* White */
+    --clr3: 0, 153, 51;     /* Dark Green */
+
+    --gradient: linear-gradient(
+        to right,
+        rgba(var(--clr2), 1) -10%,
+        rgba(var(--clr1), 0.25),
+        rgba(var(--clr2), 1),
+        rgba(var(--clr3), 0.25),
+        rgba(var(--clr2), 1) 110%
+    );
+}
+
+
 
  @media (max-width:990px) {
   .custom-sidebar-toggle{
@@ -156,7 +199,7 @@ height: var(--classic_height);
 }
 
 [data-theme="techcloud"] #navbar-breadcrumbs li:first-child{
-  padding-left: 3em !important;
+  padding-left: 1em !important;
 }
 
 [data-theme="techcloud"] #navbar-breadcrumbs a:before {
@@ -644,3 +687,4 @@ modules override classes
 
 
 /* theme page */
+

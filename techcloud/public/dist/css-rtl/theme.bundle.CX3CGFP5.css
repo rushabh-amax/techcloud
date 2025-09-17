@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
 
-/* ../../../../../../tmp/tmp-413234-MQcrq36MUrEB/199579933c71/techcloud.bundle.css */
+/* ../../../../../../tmp/tmp-181907-PPUKZGYJQpv2/19957c2e25ed3/techcloud.bundle.css */
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -35,6 +35,44 @@ body {
   background: var(--body_clr) !important;
 }
 [data-theme=techcloud] {
+}
+[data-theme=red] {
+  --navbar_searchbar_radius: 1em;
+  --body_clr: #fff5f5;
+  --control-bg: #ffcccc;
+  --classic_height: 80px;
+  --clr1:
+    255,
+    94,
+    77;
+  --clr2:
+    255,
+    255,
+    255;
+  --clr3:
+    204,
+    0,
+    0;
+  --gradient: linear-gradient( to right, rgba(var(--clr2), 1) -10%, rgba(var(--clr1), 0.25), rgba(var(--clr2), 1), rgba(var(--clr3), 0.25), rgba(var(--clr2), 1) 110% );
+}
+[data-theme=green] {
+  --navbar_searchbar_radius: 1em;
+  --body_clr: #f5fff5;
+  --control-bg: #ccffcc;
+  --classic_height: 80px;
+  --clr1:
+    102,
+    204,
+    102;
+  --clr2:
+    255,
+    255,
+    255;
+  --clr3:
+    0,
+    153,
+    51;
+  --gradient: linear-gradient( to right, rgba(var(--clr2), 1) -10%, rgba(var(--clr1), 0.25), rgba(var(--clr2), 1), rgba(var(--clr3), 0.25), rgba(var(--clr2), 1) 110% );
 }
 @media (max-width:990px) {
   .custom-sidebar-toggle {
@@ -124,7 +162,7 @@ kbd {
   list-style: none;
 }
 [data-theme=techcloud] #navbar-breadcrumbs li:first-child {
-  padding-left: 3em !important;
+  padding-left: 1em !important;
 }
 [data-theme=techcloud] #navbar-breadcrumbs a:before {
   content: "/";
@@ -178,7 +216,7 @@ kbd {
 }
 [data-theme=techcloud] .standard-sidebar-item.selected,
 [data-theme=techcloud] .standard-sidebar-item.active.selected {
-  background: #c784571f !important;
+  background: #c78457left 1 top 50%f !important;
   color: var(--active_txt_clr);
   overflow: unset;
 }
@@ -491,5 +529,5 @@ kbd {
   box-shadow: 0 0 0 0.2rem rgba(108, 142, 245, 0.25);
 }
 
-/* ../../../../../../tmp/tmp-413234-MQcrq36MUrEB/techcloud/techcloud/public/css/theme.bundle.css */
-/*# sourceMappingURL=theme.bundle.EFFON7C3.css.map */
+/* ../../../../../../tmp/tmp-181907-PPUKZGYJQpv2/techcloud/techcloud/public/css/theme.bundle.css */
+/*# sourceMappingURL=theme.bundle.CX3CGFP5.css.map */
