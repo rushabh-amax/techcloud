@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
 
-/* ../../../../../../tmp/tmp-269901-ytT75yyTNFaH/199525359c28c/techcloud.bundle.css */
+/* ../../../../../../tmp/tmp-413234-MQcrq36MUrEB/199579933c71/techcloud.bundle.css */
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -178,7 +178,7 @@ kbd {
 }
 [data-theme=techcloud] .standard-sidebar-item.selected,
 [data-theme=techcloud] .standard-sidebar-item.active.selected {
-  background: #c78457left 1 top 50%f !important;
+  background: #c784571f !important;
   color: var(--active_txt_clr);
   overflow: unset;
 }
@@ -198,6 +198,14 @@ kbd {
   --icon-fill:#EE5225;
   color: #EE5225 !important;
 }
+.grid-body div {
+  --fg-color:white !important;
+  text-align: center !important;
+  background-color: var(--fg-color) !important;
+}
+.nowrap-data-row div:not(.grid-body div) {
+  background: #ffe9e3 !important;
+}
 .scrollable-from-grid {
   width: calc(100% - 10px) !important;
   margin-inline: auto !important;
@@ -205,14 +213,6 @@ kbd {
 }
 .nowrap-data-row {
   flex-wrap: nowrap !important;
-}
-.grid-body div {
-  --fg-color:white !important;
-  text-align: center !important;
-  background-color: var(--fg-color) !important;
-}
-.nowrap-data-row div:not(.grid-body div) {
-  background: #ffe9cd !important;
 }
 .child-abs-main-container {
   position: relative !important;
@@ -491,5 +491,5 @@ kbd {
   box-shadow: 0 0 0 0.2rem rgba(108, 142, 245, 0.25);
 }
 
-/* ../../../../../../tmp/tmp-269901-ytT75yyTNFaH/techcloud/techcloud/public/css/theme.bundle.css */
-/*# sourceMappingURL=theme.bundle.CWZZ4FXV.css.map */
+/* ../../../../../../tmp/tmp-413234-MQcrq36MUrEB/techcloud/techcloud/public/css/theme.bundle.css */
+/*# sourceMappingURL=theme.bundle.EFFON7C3.css.map */

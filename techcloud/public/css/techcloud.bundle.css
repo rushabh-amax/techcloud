@@ -257,6 +257,15 @@ height: var(--classic_height);
   color:#EE5225 !important;
 }
 
+.grid-body div {
+    --fg-color:white !important;
+    text-align: center !important;
+      background-color: var(--fg-color) !important;
+}
+.nowrap-data-row div:not(.grid-body div){
+  background: #ffe9e3 !important;
+}
+
 
 .scrollable-from-grid{
   width: calc(100% - 10px) !important;
@@ -268,14 +277,6 @@ height: var(--classic_height);
   flex-wrap: nowrap !important;
 }
 
-.grid-body div {
-    --fg-color:white !important;
-    text-align: center !important;
-      background-color: var(--fg-color) !important;
-}
-.nowrap-data-row div:not(.grid-body div){
-  background: #ffe9cd !important;
-}
 
 
 .child-abs-main-container{
@@ -640,3 +641,6 @@ modules override classes
   border-color: #3a5cc7;
   box-shadow: 0 0 0 0.2rem rgba(108, 142, 245, 0.25);
 }
+
+
+/* theme page */

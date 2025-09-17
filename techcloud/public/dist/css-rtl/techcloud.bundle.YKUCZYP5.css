@@ -1,6 +1,6 @@
 @import "https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
 
-/* ../../../../../../tmp/tmp-287595-OrDmo7Iiw8uv/199525338a40/techcloud.bundle.css */
+/* ../../../../../../tmp/tmp-413234-wWKvT3c7AiIs/techcloud/techcloud/public/css/techcloud.bundle.css */
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -108,7 +108,7 @@ kbd {
   transition: 250ms ease all;
 }
 [data-theme=techcloud] .navbar .nav-item:first-child {
-  margin-left: unset !important;
+  margin-right: unset !important;
 }
 [data-theme=techcloud] .avatar .standard-image {
   border-radius: .5em;
@@ -124,16 +124,16 @@ kbd {
   list-style: none;
 }
 [data-theme=techcloud] #navbar-breadcrumbs li:first-child {
-  padding-left: 3em !important;
+  padding-right: 3em !important;
 }
 [data-theme=techcloud] #navbar-breadcrumbs a:before {
   content: "/";
   display: inline-block;
-  margin-right: 3px !important;
+  margin-left: 3px !important;
   font-size: 12px;
 }
 [data-theme=techcloud] #navbar-breadcrumbs a {
-  margin-right: unset !important;
+  margin-left: unset !important;
   display: flex;
   align-items: center;
   gap: .35em;
@@ -152,7 +152,7 @@ kbd {
   padding-inline: .25em;
 }
 [data-theme=techcloud] [data-page-route=Workspaces] .layout-main .layout-side-section {
-  padding-right: 15px;
+  padding-left: 15px;
   width: 200px;
   overflow-x: hidden;
 }
@@ -162,7 +162,7 @@ kbd {
 }
 [data-theme=techcloud] .sidebar-item-container {
   margin-block: .25em;
-  margin-left: 0px;
+  margin-right: 0px;
 }
 [data-theme=techcloud] .sidebar-item-container .desk-sidebar-item {
   padding: 1em 0em;
@@ -172,13 +172,13 @@ kbd {
 }
 [data-theme=techcloud] .desk-sidebar-item:has(+ .sidebar-child-item) .drop-icon {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
 }
 [data-theme=techcloud] .standard-sidebar-item.selected,
 [data-theme=techcloud] .standard-sidebar-item.active.selected {
-  background: #c784571f !important;
+  background: #c78457right 1 top 50%f !important;
   color: var(--active_txt_clr);
   overflow: unset;
 }
@@ -198,6 +198,14 @@ kbd {
   --icon-fill:#EE5225;
   color: #EE5225 !important;
 }
+.grid-body div {
+  --fg-color:white !important;
+  text-align: center !important;
+  background-color: var(--fg-color) !important;
+}
+.nowrap-data-row div:not(.grid-body div) {
+  background: #ffe9e3 !important;
+}
 .scrollable-from-grid {
   width: calc(100% - 10px) !important;
   margin-inline: auto !important;
@@ -205,14 +213,6 @@ kbd {
 }
 .nowrap-data-row {
   flex-wrap: nowrap !important;
-}
-.grid-body div {
-  --fg-color:white !important;
-  text-align: center !important;
-  background-color: var(--fg-color) !important;
-}
-.nowrap-data-row div:not(.grid-body div) {
-  background: #ffe9cd !important;
 }
 .child-abs-main-container {
   position: relative !important;
@@ -265,7 +265,7 @@ kbd {
 [data-theme=techcloud] .frappe-control[data-fieldtype=Select] .form-group .select-icon.xs,
 [data-theme=techcloud] .frappe-control[data-fieldtype=Select] .form-group .select-icon {
   top: 9px !important;
-  right: 10px;
+  left: 10px;
 }
 [data-theme=techcloud] .input-with-feedback .form-control span {
   top: 6px !important;
@@ -293,7 +293,7 @@ kbd {
 }
 [data-theme=techcloud] .page-actions {
   align-items: center;
-  padding-right: 1em;
+  padding-left: 1em;
 }
 @media (max-width:990px) {
   .custom-sidebar-toggle {
@@ -325,7 +325,7 @@ kbd {
 @media (max-width: 991px) {
   .layout-side-section {
     position: absolute;
-    left: 0;
+    right: 0;
   }
 }
 @media (max-width: 991px) {
@@ -356,7 +356,7 @@ kbd {
 [data-theme=techcloud] .widget-control.indicator-pill.no-indicator-dot {
   position: absolute;
   bottom: 0;
-  right: .25em;
+  left: .25em;
   scale: .85;
   z-index: 1;
 }
@@ -414,7 +414,7 @@ kbd {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-left: 6px;
+  margin-right: 6px;
   border: 1px solid #ccc;
   vertical-align: middle;
 }
@@ -471,7 +471,7 @@ kbd {
 }
 [data-theme=techcloud] .btn-default:active,
 [data-theme=techcloud] .btn-default:focus {
-  background: linear-gradient(135deg, #F5E1D6, #EECFC0);
+  background: linear-gradient(-135deg, #F5E1D6, #EECFC0);
   border-color: #C8AA96;
   box-shadow: 0 0 0 0.2rem rgba(6, 167, 203, 0.25);
 }
@@ -490,6 +490,4 @@ kbd {
   border-color: #3a5cc7;
   box-shadow: 0 0 0 0.2rem rgba(108, 142, 245, 0.25);
 }
-
-/* ../../../../../../tmp/tmp-287595-OrDmo7Iiw8uv/techcloud/techcloud/public/css/theme.bundle.css */
-/*# sourceMappingURL=theme.bundle.IWL55GKM.css.map */
+/*# sourceMappingURL=techcloud.bundle.YKUCZYP5.css.map */
