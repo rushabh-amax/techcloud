@@ -12,7 +12,7 @@
         position: "absolute",
         bottom: "0",
         height: "4px",
-        background: "#AFDDFF",
+        background: "var(--tabBeforeSlide)  ",
         borderRadius: "1em 1em 0em 0em",
         transition: "transform 200ms ease, width 200ms ease",
         left: "0",
@@ -90,4 +90,4 @@
     });
   });
 })();
-//# sourceMappingURL=customJs.bundle.4DS3OEZZ.js.map
+//# sourceMappingURL=customJs.bundle.W4WHNVEJ.js.map

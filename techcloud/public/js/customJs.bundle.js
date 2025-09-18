@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
       position: 'absolute',
       bottom: '0',
       height: '4px',
-      background: '#AFDDFF',
+      background: 'var(--tabBeforeSlide)  ',
       borderRadius: '1em 1em 0em 0em',
       transition: 'transform 200ms ease, width 200ms ease',
       left: '0',

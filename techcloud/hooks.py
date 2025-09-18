@@ -18,7 +18,7 @@ after_login = ["techcloud.utils.set_default_redirect"]
 # ]
 web_include_js = [
     "theme.bundle.js",
-    "assets/hims/js/login.bundle.js"
+    "/assets/techcloud/js/login.bundle.js"
 ]
 
 home_page = "/modules"

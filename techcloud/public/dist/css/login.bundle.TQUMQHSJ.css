@@ -1,0 +1,144 @@
+/* ../../../../../../tmp/tmp-215879-TWLzsoSzURUn/techcloud/techcloud/public/css/login.bundle.css */
+body[frappe-session-status=logged-out][data-path=login] .navbar.navbar-light.navbar-expand-lg {
+  display: none;
+}
+body[frappe-session-status=logged-out][data-path=login] .web-footer {
+  display: none;
+}
+body[frappe-session-status=logged-out][data-path=login] .page_content {
+  display: flex;
+}
+body[frappe-session-status=logged-out][data-path=login] .container {
+  display: flex !important;
+  height: 85vh !important;
+  width: 100% !important;
+  justify-content: end !important;
+  background: white !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .container.my-4 {
+  margin-block: 40px !important;
+  overflow: hidden !important;
+  border-radius: 26px !important;
+}
+@media (min-width: 992px) {
+  .container {
+    padding-left: unset !important;
+    padding-right: unset !important;
+  }
+}
+body[frappe-session-status=logged-out][data-path=login] .page_content {
+  background: green;
+  flex: 1 !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .page-header-wrapper {
+  background-position: center !important;
+  background: transparent !important;
+  flex: 1 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: url(/assets/techcloud/images/Art2.png) !important;
+  height: 100%;
+  width: 100%;
+  background-size: cover !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .page-header-wrapper .page-header {
+}
+@media (max-width : 767px) {
+  .page-header-wrapper {
+    display: none !important;
+  }
+}
+input:-webkit-autofill {
+  background-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+body[frappe-session-status=logged-out][data-path=login] .page_content > div {
+  display: flex;
+  background: whitesmoke;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+body[frappe-session-status=logged-out][data-path=login] .for-login,
+body[frappe-session-status=logged-out][data-path=login] .for-forgot,
+body[frappe-session-status=logged-out][data-path=login] .for-login-with-email-link {
+  width: 80% !important;
+  padding-inline: 2em !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .page-card-head .app-logo {
+  content: url(/assets/techcloud/images/techcloudlogo.svg);
+  width: 200px !important;
+  height: auto !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .email-field,
+body[frappe-session-status=logged-out][data-path=login] .password-field {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: #fff;
+  flex-direction: row-reverse;
+  position: relative;
+}
+body[frappe-session-status=logged-out][data-path=login] .password-field .custom-toggle-password {
+  position: absolute;
+  right: 10px;
+}
+body[frappe-session-status=logged-out][data-path=login] .email-field input,
+body[frappe-session-status=logged-out][data-path=login] .password-field input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-size: 14px;
+  background: transparent;
+}
+body[frappe-session-status=logged-out][data-path=login] .email-field {
+  margin-top: 40px !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .email-field .icon,
+body[frappe-session-status=logged-out][data-path=login] .password-field .icon {
+  margin-right: 8px !important;
+  color: #666;
+  flex-shrink: 0 !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .password-field .toggle-password {
+  margin-left: 8px !important;
+  font-size: 14px;
+  cursor: pointer;
+  color: #007bff;
+  flex-shrink: 0 !important;
+  position: absolute;
+  right: 5px;
+}
+body[frappe-session-status=logged-out][data-path=login] .page-card-body {
+  position: relative !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .forgot-password-message > a {
+  display: flex !important;
+  justify-content: end !important;
+  color: #1E4AE9 !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .page-card-actions > button {
+  background-color: #05A8CC !important;
+  color: white !important;
+  width: 100% !important;
+  margin-inline: auto !important;
+  padding-block: 10px !important;
+  margin-block: 1.5em;
+}
+body[frappe-session-status=logged-out][data-path=login] .email-field > svg,
+body[frappe-session-status=logged-out][data-path=login] .password-field > svg {
+  display: none !important;
+}
+body[frappe-session-status=logged-out][data-path=login] .login-subtitle {
+  margin: 20px 0;
+}
+/*# sourceMappingURL=login.bundle.TQUMQHSJ.css.map */

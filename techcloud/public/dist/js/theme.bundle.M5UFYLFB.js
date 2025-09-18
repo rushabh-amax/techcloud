@@ -34,6 +34,28 @@
             solid: false
           },
           {
+            name: "astro",
+            label: "astro",
+            info: "astro Theme",
+            colors: {
+              primary: "#FF6FD8",
+              secondary: "#6C42C7",
+              accent: "#FFD600"
+            },
+            solid: false
+          },
+          {
+            name: "verde",
+            label: "verde",
+            info: "verde Theme",
+            colors: {
+              primary: "#1b4332",
+              secondary: "#f0fff4",
+              accent: "#f0fff4"
+            },
+            solid: false
+          },
+          {
             name: "red",
             label: "red",
             info: "red Theme",
@@ -44,7 +66,49 @@
             name: "green",
             label: "green",
             info: "green Theme",
-            colors: { primary: "#2E7D32" },
+            colors: { primary: "#278340" },
+            solid: true
+          },
+          {
+            name: "blue",
+            label: "blue",
+            info: "blue Theme",
+            colors: { primary: "#237DD1" },
+            solid: true
+          },
+          {
+            name: "purple",
+            label: "purple",
+            info: "purple Theme",
+            colors: { primary: "#AF42AE" },
+            solid: true
+          },
+          {
+            name: "orange",
+            label: "orange",
+            info: "orange Theme",
+            colors: { primary: "#E6793B" },
+            solid: true
+          },
+          {
+            name: "peri",
+            label: "peri",
+            info: "peri Theme",
+            colors: { primary: "#645788" },
+            solid: true
+          },
+          {
+            name: "cn",
+            label: "cn",
+            info: "shadcn Theme",
+            colors: { primary: "#2563eb", secondary: "#64748b", accent: "#0f172a" },
+            solid: false
+          },
+          {
+            name: "custom",
+            label: "Custom",
+            info: "User-defined color theme",
+            colors: { primary: "#2563eb" },
             solid: true
           }
         ];
@@ -114,6 +178,38 @@
     });
     observer.observe(document.body, { childList: true, subtree: true });
   });
+  frappe.ready(function() {
+    const heading = document.querySelector(
+      'body[frappe-session-status="logged-out"][data-path="login"] .page-card-head h4'
+    );
+    if (heading) {
+      const newLine = document.createElement("p");
+      newLine.textContent = "Today is a new day. It's your day. You shape it. Sign in to start managing your projects.";
+      newLine.className = "login-subtitle";
+      heading.parentNode.insertBefore(newLine, heading.nextSibling);
+    }
+  });
+  frappe.after_ajax(() => {
+    const checkNavbar = setInterval(() => {
+      let $userDropdown = $(".navbar .dropdown-navbar-user");
+      if ($userDropdown.length && !$("#theme-navbar-icon").length) {
+        clearInterval(checkNavbar);
+        console.log("Injecting theme icon near avatar...");
+        let svgIcon = `
+                <li id="theme-navbar-icon" class="nav-item" 
+                    style="display:flex;align-items:center;cursor:pointer;margin-right:8px;">
+                    <button class="btn-theme btn-reset nav-link" title="Theme Hub">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette-icon lucide-palette"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+                    </button>
+                </li>
+            `;
+        $userDropdown.before(svgIcon);
+        $("#theme-navbar-icon").on("click", () => {
+          frappe.set_route("themes");
+        });
+      }
+    }, 300);
+  });
 
   // ../techcloud/techcloud/public/js/customJs.bundle.js
   document.addEventListener("DOMContentLoaded", function() {
@@ -128,7 +224,7 @@
         position: "absolute",
         bottom: "0",
         height: "4px",
-        background: "#AFDDFF",
+        background: "var(--tabBeforeSlide)  ",
         borderRadius: "1em 1em 0em 0em",
         transition: "transform 200ms ease, width 200ms ease",
         left: "0",
@@ -324,4 +420,4 @@
     });
   });
 })();
-//# sourceMappingURL=theme.bundle.SSAFJHOR.js.map
+//# sourceMappingURL=theme.bundle.M5UFYLFB.js.map

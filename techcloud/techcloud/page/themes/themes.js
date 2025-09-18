@@ -31,11 +31,24 @@
                                 <li class="nav-item">
                                     <a class="nav-link" data-fieldname="fonts" role="tab">Fonts</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-fieldname="bg_image" role="tab">BG Image</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-fieldname="Advanced Settings" role="tab">Advanced Settings</a>
+                                </li>
                             </ul>
                             <div class="tab-content mt-3">
                                 <div class="tab-pane fade show active" data-fieldname="themes"></div>
                                 <div class="tab-pane fade" data-fieldname="solid_colors"></div>
                                 <div class="tab-pane fade" data-fieldname="fonts"></div>
+                                <div class="tab-pane fade" data-fieldname="bg_image"></div>
+
+                                <div class="tab-pane fade" data-fieldname="Advanced Settings">
+                                <p style="text-align:center;padding-block: 10em;">comming soon</p>
+                                </div>
+                                
+
                             </div>
                         </div>
                     </div>
@@ -59,7 +72,7 @@
                 display: flex;
                 align-items: center;
                 padding-block: 1em;
-                justify-content: space-between;
+                justify-content: start;
                 border-bottom: 1.4px solid var(--control-bg);
                 ">
                     <label for="user-theme-toggle" style="margin-bottom: unset; font-weight:500; cursor:pointer;">Only For Me</label>
@@ -190,7 +203,7 @@
                         width: 90%;
                         margin-inline: auto;
                         border-radius: 8px;
-                        box-shadow: 0px 6px 10px 0px #f5f5f54d;
+                        box-shadow: 0px 6px 10px 0px  ${hexToRGBA(t.colors.primary, 0.05)};
                         border: 1px solid whitesmoke;
     
                         ">
@@ -204,8 +217,8 @@
                 </div>
 
                 <div class="mt-1 text-center" style="text-align:center; margin-top:12px;">
-                    <h6 class="theme-title" style="font-size: 17px;
-        margin: .5em 0em;">${t.label}</h6>
+                    <p class="theme-title" style="font-size: 14px;
+        margin: .5em 0em;">${t.label}</p>
                 </div>
             </div>
         `);
@@ -286,23 +299,57 @@
         themesContainer.append(themeItem);
     });
 
-
-
+// ---------------------------
+// SOLID COLORS TAB CONTAINER
+// ---------------------------
 solidContainer.css({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "flex-start",
     gap: "12px"
 });
-// Add custom color picker at the top of the Solid Colors tab
-solidContainer.prepend(`
-    <div class="mb-3" style="width: 100%; margin-bottom: 1em;">
-        <label>Custom Color</label>
-        <input type="color" id="custom-solid-color" value="#EDEDED" style="width: 60px; height: 34px; border: none; cursor: pointer;">
+
+// --- Custom Color Picker Card ---
+let customColorCard = $(`
+    <div class="theme-card custom-color-card"
+        style="flex: 1 1 calc(20% - 20px); max-width: calc(20% - 20px);
+            cursor:pointer; min-width:150px; display:flex; flex-direction:column; height:185px;">
+
+        <div class="background" style="border:1px solid #ddd; border-radius:1em; overflow:hidden;
+                height:100%; position:relative; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+            
+            <!-- Tick check -->
+            <div class="preview-check" style="display:none; position:absolute; bottom:7px; right:7px;
+                    background:whitesmoke; border-radius:50em; width:32px; text-align:center;">
+                <svg class="icon icon-xs" aria-hidden="true">
+                    <use href="#icon-tick"></use>
+                </svg>
+                
+            </div>
+           
+
+            <!-- Badge -->
+            <span class="badge" style="background:#f1f1f1; color:#333; 
+                padding:4px 10px; border-radius:50em; font-size:13px; font-weight:500;
+                margin-bottom:10px;">Choose Color</span>
+
+            <!-- Color Picker -->
+            <input type="color" id="custom-solid-color" value="#EDEDED" 
+                style="width:60px; border-radius:50em;   height:34px; border:none; cursor:pointer; background:transparent;">
+        </div>
+
+        <div class="mt-1 text-center" style="text-align:center; margin-top:12px;">
+            <p class="theme-title" style="font-size:14px; margin:.5em 0;">Custom</p>
+        </div>
     </div>
 `);
+
+solidContainer.prepend(customColorCard);
+
+
+
 // ---------------------------
-// SOLID COLORS TAB
+// SOLID COLORS LOOP
 // ---------------------------
 themes.filter(t => t.solid).forEach((t) => {
     let solidItem = $(`
@@ -315,23 +362,17 @@ themes.filter(t => t.solid).forEach((t) => {
                 <div class="background" 
                      style="border:1px solid #ddd; border-radius:1em; overflow:hidden;
                             height:100%; position:relative;">
-                    <div>
-                            <div class="preview-check" data-theme="${t.name}" style="display:none; position: absolute;
-                                    bottom: 7px;
-                                    right: 7px;
-                                    background:whitesmoke;
-                                    border-radius: 50em;
-                                    width: 32px;
-                                    text-align: center; ">
-                                <svg class="icon icon-xs" aria-hidden="true">
-                                    <use href="#icon-tick"></use>
-                                </svg>
-                            </div>
-                        </div>
+                    <div class="preview-check" data-theme="${t.name}" style="display:none; position: absolute;
+                            bottom:7px; right:7px; background:whitesmoke;
+                            border-radius:50em; width:32px; text-align:center;">
+                        <svg class="icon icon-xs" aria-hidden="true">
+                            <use href="#icon-tick"></use>
+                        </svg>
+                    </div>
 
                     <div class="navbar"></div>
                     <div class="p-2" style="padding:8px; margin-top:1em; height:70px; width:90%;
-                        margin-inline:auto; border-radius:8px; box-shadow:0px 6px 10px #f5f5f54d;
+                        margin-inline:auto; border-radius:8px; box-shadow:0px 6px 10px  ${hexToRGBA(t.colors.primary, 0.05)};
                         border:1px solid whitesmoke;">
                         <div class="toolbar">
                             <span class="text"></span>
@@ -342,7 +383,7 @@ themes.filter(t => t.solid).forEach((t) => {
             </div>
 
             <div class="mt-1 text-center" style="text-align:center; margin-top:12px;">
-                <h6 class="theme-title" style="font-size:17px; margin:.5em 0;">${t.label}</h6>
+                <p class="theme-title" style="font-size:14px; margin:.5em 0;">${t.label}</p>
             </div>
         </div>
     `);
@@ -384,19 +425,6 @@ themes.filter(t => t.solid).forEach((t) => {
             borderRadius: "3px",
             background: primary
         });
-
-        solidItem.find(".foreground").eq(0).css({
-            height: "6px",
-            marginBottom: "3px",
-            background: lighter,
-            borderRadius: "3px"
-        });
-
-        solidItem.find(".foreground").eq(1).css({
-            height: "6px",
-            background: primary,
-            borderRadius: "3px"
-        });
     }
 
     // Preselect current
@@ -415,19 +443,19 @@ themes.filter(t => t.solid).forEach((t) => {
 
         solidItem.find(".preview-check").show().css("color", "whitesmoke");
         solidItem.addClass("selected");
+
+        // Deselect custom card
+        customColorCard.removeClass("selected").find(".preview-check").hide();
     });
 
     solidContainer.append(solidItem);
 });
 
 // ---------------------------
-// CUSTOM COLOR PICKER
-// ---------------------------
-// ---------------------------
-// Custom Solid Color Picker
+// CUSTOM COLOR PICKER HANDLING
 // ---------------------------
 
-// Utility to generate RGBA from hex
+// hex → rgba
 function hexToRGBA(hex, alpha) {
     let r = parseInt(hex.substr(1,2),16);
     let g = parseInt(hex.substr(3,2),16);
@@ -435,138 +463,124 @@ function hexToRGBA(hex, alpha) {
     return `rgba(${r},${g},${b},${alpha})`;
 }
 
-// Get saved custom color from user defaults (or fallback)
-const savedCustomColor = frappe.defaults.get_user_default("custom_solid_color") || "whitesmoke";
-
-// Set initial value of color picker
-$('#custom-solid-color').val(savedCustomColor);
-
-function applyCustomColor(color) {
-    // Update theme cards border
-    $('.tab-pane[data-fieldname="solid_colors"] .theme-card').css({
-        borderColor: color,
-    });
-
-    // Primary color variables
-    document.documentElement.style.setProperty('--primary', color);
-    document.documentElement.style.setProperty('--brand-color', color);
-    document.documentElement.style.setProperty('--plyr-color-main', color);
-    document.documentElement.style.setProperty('--progress-bar-bg', color);
-
-    // Light shades
-    document.documentElement.style.setProperty('--primary-light', hexToRGBA(color, 0.2));
-    document.documentElement.style.setProperty('--primary-lighter', hexToRGBA(color, 0.07));
-
-    // --- Buttons ---
-    document.documentElement.style.setProperty('--control-bg', color); // button background
-
-    // Dynamically calculate text color for contrast
-    const textColor = getContrastColor(color);
-    document.documentElement.style.setProperty('--text-color', textColor);
-}
-
-// Helper function to get light or dark text based on background color
+// contrast color
 function getContrastColor(hex) {
-    // Remove hash if present
     hex = hex.replace('#', '');
-
-    // Convert 3-digit hex to 6-digit
-    if (hex.length === 3) {
-        hex = hex.split('').map(c => c + c).join('');
-    }
-
+    if (hex.length === 3) hex = hex.split('').map(c => c+c).join('');
     const r = parseInt(hex.substr(0,2),16);
     const g = parseInt(hex.substr(2,2),16);
     const b = parseInt(hex.substr(4,2),16);
-
-    // Calculate luminance
     const luminance = (0.299*r + 0.587*g + 0.114*b)/255;
-
-    // Return black for light bg, white for dark bg
-    return luminance > 0.6 ? '#EDEDED' : '#000';
+    return luminance > 0.6 ? '#000' : '#fff';
 }
 
-// Example usage
-$('#custom-solid-color').on('input', function() {
-    const color = $(this).val();
-    applyCustomColor(color);
-});
+// apply color
+function applyCustomColor(color) {
+    const hover = hexToRGBA(color, 0.85);
+    const border = hexToRGBA(color, 0.15);
+    const muted = hexToRGBA(color, 0.05);
+    const mutedHover = hexToRGBA(color, 0.1);
+    const textColor = getContrastColor(color);
 
+    const css = `
+        [data-theme="custom"] {
+            --primary: ${color};
+            --primary-hover: ${hover};
+            --secondary: ${border};
+            --secondary-hover: ${mutedHover};
+            --background: #ffffff;
+            --foreground: ${textColor};
+            --muted: ${muted};
+            --muted-hover: ${mutedHover};
+            --border-color: ${border};
+            --text-muted: #64748b;
+            --tabBeforeSlide:${color};
+        }
+    `;
+
+    let styleTag = document.getElementById("custom-theme-style");
+    if (!styleTag) {
+        styleTag = document.createElement("style");
+        styleTag.id = "custom-theme-style";
+        document.head.appendChild(styleTag);
+    }
+    styleTag.innerHTML = css;  
+}
 
 // ---------------------------
-// Save color preference on change
+// INIT: Load saved theme & color
+// ---------------------------
+function initCustomTheme() {
+    const savedColor = frappe.boot.user.user_preferences?.custom_solid_color || "#2563eb";
+    const currentTheme = frappe.boot.user.user_preferences?.current_theme;
+
+    if (currentTheme === "custom") {
+        $('#custom-solid-color').val(savedColor);
+        theme_switcher.current_theme = "custom";
+        document.documentElement.setAttribute("data-theme", "custom");
+        document.documentElement.setAttribute("data-theme-mode", "custom");
+        applyCustomColor(savedColor);
+
+        solidContainer.find(".selected").removeClass("selected").find(".preview-check").hide();
+        customColorCard.addClass("selected").find(".preview-check").show();
+    }
+}
+
+// ---------------------------
+// EVENT: Live preview
+// ---------------------------
+$('#custom-solid-color').on('input', function() {
+    const color = $(this).val();
+    theme_switcher.current_theme = "custom";
+    document.documentElement.setAttribute("data-theme", "custom");
+    applyCustomColor(color);
+
+    solidContainer.find(".selected").removeClass("selected").find(".preview-check").hide();
+    customColorCard.addClass("selected").find(".preview-check").show();
+});
+
+// ---------------------------
+// EVENT: Persist color + theme
 // ---------------------------
 $('#custom-solid-color').on('change', function() {
     const color = $(this).val();
+    theme_switcher.current_theme = "custom";
+    document.documentElement.setAttribute("data-theme", "custom");
+    document.documentElement.setAttribute("data-theme-mode", "custom");
+    applyCustomColor(color);
 
+    // Save both color + active theme
     frappe.call({
         method: "techcloud.api.user.save_color_preference",
-        args: {
-            key: "custom_solid_color",
-            value: color
-        },
+        args: { key: "custom_solid_color", value: color },
         callback: function() {
-            // Update local session so it shows selected immediately
             frappe.boot.user.user_preferences = frappe.boot.user.user_preferences || {};
             frappe.boot.user.user_preferences['custom_solid_color'] = color;
+
+            frappe.call({
+                method: "techcloud.api.user.save_color_preference",
+                args: { key: "current_theme", value: "custom" },
+                callback: function() {
+                    frappe.boot.user.user_preferences['current_theme'] = "custom";
+                }
+            });
         }
     });
 });
 
-// Get saved custom color from user defaults (or fallback)
-// const savedCustomColor = frappe.defaults.get_user_default("custom_solid_color") || "whitesmoke";
-
-// // Set initial value of color picker
-// $('#custom-solid-color').val(savedCustomColor);
-
-// // Apply saved color immediately
-// document.documentElement.style.setProperty('--primary-color', savedCustomColor);
-// $('.tab-pane[data-fieldname="solid_colors"] .theme-card').css({
-//     borderColor: savedCustomColor,
-//     boxShadow: `0px 6px 10px ${savedCustomColor}33`
-// });
-
-// // Live update on input
-// // $('#custom-solid-color').on('input', function() {
-// //     const color = $(this).val();
-
-// //     // Apply color to all theme cards
-// //     $('.tab-pane[data-fieldname="solid_colors"] .theme-card').css({
-// //         borderColor: color,
-// //         boxShadow: `0px 6px 10px ${color}33`
-// //     });
-
-// //     // Apply as site-wide primary color
-// //     document.documentElement.style.setProperty('--primary-color', color);
-// // });
-
-
-
-// // Save color preference on change
-// $('#custom-solid-color').on('change', function() {
-//     const color = $(this).val();
-
-//     frappe.call({
-//         method: "techcloud.api.user.save_color_preference",
-//         args: {
-//             key: "custom_solid_color",
-//             value: color
-//         },
-//         callback: function() {
-//             // Update local session so it shows selected immediately
-//             frappe.boot.user.user_preferences = frappe.boot.user.user_preferences || {};
-//             frappe.boot.user.user_preferences['custom_solid_color'] = color;
-//         }
-//     });
-// });
-
+// initialize
+initCustomTheme();
 
 // ---------------------------
 // FONTS TAB (Google Fonts Dynamic + Persistence)
 // ---------------------------
 const googleFonts = [
     "Roboto", "Open Sans", "Lato", "Montserrat", "Oswald",
-    "Raleway", "Poppins", "Merriweather", "Nunito", "Ubuntu"
+    "Raleway", "Poppins", "Merriweather", "Nunito", "Ubuntu",
+     "Inter", "Work Sans", "DM Sans", "Fira Sans", "IBM Plex Sans",
+    "Hind", "Exo 2", "Manrope", "Sora", "Karla",
+    "Mulish", "Archivo", "Overpass", "Public Sans", "Space Grotesk",
+    "JetBrains Mono", "Comfortaa", "Quicksand", "Red Hat Display", "Chivo"
 ];
 
 function loadGoogleFont(fontName) {
@@ -582,9 +596,9 @@ function loadGoogleFont(fontName) {
 
 function applyFont(type, font) {
     if (type === 'heading') {
-        $('h1, h2, h3, h4, h5, h6').css('font-family', `"${font}", sans-serif`);
+        $('h1, h2, h3, h4, h5').css('font-family', `"${font}", sans-serif`);
     } else {
-        $('p, span, div').css('font-family', `"${font}", sans-serif`);
+        $(' h6 , p, span, div,a,label').css('font-family', `"${font}", sans-serif`);
     }
 }
 
@@ -592,13 +606,13 @@ function applyFont(type, font) {
 fontsContainer.html(`
     <div class="mb-3">
         <label>Heading Font</label>
-        <select class="form-control" id="heading-font">
+        <select class="form-control" style="height:40px" id="heading-font">
             ${googleFonts.map(f => `<option value="${f}">${f}</option>`).join('')}
         </select>
     </div>
     <div class="mb-3">
         <label>Paragraph Font</label>
-        <select class="form-control" id="paragraph-font">
+        <select class="form-control"  style="height:40px" id="paragraph-font">
             ${googleFonts.map(f => `<option value="${f}">${f}</option>`).join('')}
         </select>
     </div>
@@ -611,7 +625,7 @@ const savedParagraphFont = frappe.defaults.get_user_default("paragraph_font") ||
 loadGoogleFont(savedHeadingFont);
 applyFont('heading', savedHeadingFont);
 loadGoogleFont(savedParagraphFont);
-applyFont('paragraph', savedParagraphFont);
+applyFont('paragraph',  savedParagraphFont);
 
 // Set select values
 $('#heading-font').val(savedHeadingFont);
@@ -644,8 +658,156 @@ $('#paragraph-font').on('change', function() {
 });
 
 
+//==============================
+//== Background Image Picker with Persistence
+//===============================
+//==============================
+//== Background Image Picker with Preview & Persistence
+//===============================
+let bgImageContainer = $('.tab-pane[data-fieldname="bg_image"]');
 
+bgImageContainer.html(`
+   <div class="bg-image-card shadow-sm" style="
+    display:flex; 
+    flex-direction:column;
+    align-items:flex-start; 
+    border-radius: 1em;
+    padding: 20px; 
+    min-height:240px;
+    margin: auto;
+    transition: all 0.3s ease;
+    position: relative;
+    background:#fff;
+">
+  <!-- Info text -->
+  <p style="
+        font-size:12px;
+        color:#666;
+        opacity:0.85;
+        line-height:1.4;
+        margin-bottom: 14px;
+    ">
+      This feature works best with <b>solid themes</b>.<br>
+      For subtle effect, try <b>low-opacity</b> images.
+  </p>
 
+  <!-- Actions -->
+  <button class="btn btn-primary" id="bg-image-attach-btn" style="
+      padding:8px 16px; 
+      font-size:14px;
+      border-radius:0.5em;
+      transition: all 0.3s ease;
+      margin-bottom: 10px;
+  ">
+    Attach Image
+  </button>
+  <input type="file" id="bg-image-picker" accept="image/*" style="display:none;">
+
+  <!-- Sticky option -->
+  <label style="font-size:13px; cursor:pointer; margin-bottom:12px;">
+      <input type="checkbox" id="bg-image-sticky"> Stick image to body
+  </label>
+
+  <!-- Preview -->
+  <img id="bg-image-preview" src="" style="
+      display:none;
+      width:100%;
+      max-height:500px;
+      border-radius:0.75em;
+      object-fit:cover;
+      box-shadow:0 2px 6px rgba(0,0,0,0.15);
+  ">
+</div>
+
+`);
+
+//--------------------------
+// Open file picker
+//--------------------------
+$('#bg-image-attach-btn').on('click', function() {
+    $('#bg-image-picker').click();
+});
+
+//--------------------------
+// Apply BG image + preview + persist
+//--------------------------
+$('#bg-image-picker').on('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const filedata = e.target.result;
+
+        // Show preview
+        $('#bg-image-preview').attr('src', filedata).fadeIn(300);
+
+        // Apply to body
+        document.body.style.backgroundImage = `url(${filedata})`;
+        document.body.style.backgroundSize = 'cover';
+        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundPosition = 'center';
+
+        // Save using API
+        const sticky = $('#bg-image-sticky').is(':checked') ? "1" : "0";
+        frappe.call({
+            method: "techcloud.api.user.save_bg_image",
+            args: { filedata, sticky },
+        });
+    }
+    reader.readAsDataURL(file);
+});
+
+//--------------------------
+// Sticky toggle (optimized)
+//--------------------------
+$('#bg-image-sticky').on('change', function() {
+    document.body.style.backgroundAttachment = this.checked ? 'fixed' : 'scroll';
+
+    // Only save sticky; no need to resend base64
+    frappe.call({
+        method: "techcloud.api.user.save_bg_image",
+        args: { sticky: this.checked ? "1" : "0" },
+    });
+});
+
+//--------------------------
+// Load saved BG image + sticky preference
+//--------------------------
+function initBGImage() {
+    frappe.call({
+        method: "techcloud.api.user.get_bg_image",
+        callback: function(r) {
+            if (!r.message) return;
+
+            const savedBg = r.message.bg_image;
+            const sticky = r.message.bg_image_sticky === "1";
+
+            if (savedBg) {
+                $('#bg-image-preview').attr('src', savedBg).show();
+                document.body.style.backgroundImage = `url(${savedBg})`;
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundRepeat = 'no-repeat';
+                document.body.style.backgroundPosition = 'center';
+            }
+
+            if (sticky) {
+                $('#bg-image-sticky').prop('checked', true);
+                document.body.style.backgroundAttachment = 'fixed';
+            } else {
+                $('#bg-image-sticky').prop('checked', false);
+                document.body.style.backgroundAttachment = 'scroll';
+            }
+        }
+    });
+}
+
+//--------------------------
+// Initialize BG image on page load
+//--------------------------
+initBGImage();
+
+// Revert theme including BG image
 function revertToDefaultTheme() {
     $('.theme-card.selected').removeClass('selected').find('.preview-check').hide();
 
@@ -655,16 +817,22 @@ function revertToDefaultTheme() {
     document.documentElement.style.setProperty('--brand-color', defaultColor);
     document.documentElement.style.setProperty('--plyr-color-main', defaultColor);
     document.documentElement.style.setProperty('--progress-bar-bg', defaultColor);
-
     document.documentElement.style.setProperty('--primary-light', 'rgba(6,167,203,0.2)');
     document.documentElement.style.setProperty('--primary-lighter', 'rgba(6,167,203,0.07)');
-
     document.documentElement.style.setProperty('--control-bg', defaultColor);
+    document.documentElement.style.setProperty('--text-color', '#444');
+    $('h1, h2, h3, h4, h5, h6, p, span, div,a').css('font-family', '');
 
-    document.documentElement.style.setProperty('--text-color', '#ffffff');
+    // Reset BG image
+    $('#bg-image-preview').hide().attr('src','');
+    $('#bg-image-sticky').prop('checked', false);
+    document.body.style.backgroundImage = '';
+    document.body.style.backgroundAttachment = 'scroll';
 
-    $('h1, h2, h3, h4, h5, h6, p, span, div').css('font-family', '');
+    // Clear saved BG preferences
+    frappe.call({ method: "techcloud.api.user.save_bg_image", args: { filedata: null, sticky: "0" }});
 }
+
 
 });
 }

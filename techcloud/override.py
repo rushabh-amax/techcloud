@@ -4,7 +4,7 @@ import frappe
 def switch_theme(theme):
     theme = theme.strip().lower()
 
-    allowed_themes = ["dark", "light", "automatic", "techcloud","red","green"]
+    allowed_themes = ["dark", "light", "automatic","custom", "techcloud","red","green","orange","peri","purple","blue","cn","astro","verde"]
     if theme not in allowed_themes:
         frappe.throw(f"Invalid theme: {theme}")
 
