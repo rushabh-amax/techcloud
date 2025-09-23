@@ -279,21 +279,43 @@
         }
 
         // Click to apply
+        // themeItem.on("click", function() {
+        //      // If custom theme toggle is ON, turn it off
+        //     if ($('#user-theme-toggle').is(':checked')) {
+        //         $('#user-theme-toggle').prop('checked', false);
+        //         revertToDefaultTheme();
+        //     }
+
+            
+
+
+        //     theme_switcher.toggle_theme(t.name);
+        //     themesContainer.find(".selected")
+        //         .removeClass("selected")
+        //         .find(".preview-check").hide();
+        //     themeItem.find(".preview-check").show().css("color", "whitesmoke");
+        //     themeItem.addClass("selected");
+        // });
+
         themeItem.on("click", function() {
-             // If custom theme toggle is ON, turn it off
-            if ($('#user-theme-toggle').is(':checked')) {
-                $('#user-theme-toggle').prop('checked', false);
-                revertToDefaultTheme();
-            }
+    if ($('#user-theme-toggle').is(':checked')) {
+        $('#user-theme-toggle').prop('checked', false);
+        revertToDefaultTheme();
+    }
 
+    // ✅ Persist + update both attributes
+    frappe.ui.set_theme(t.name);
 
-            theme_switcher.toggle_theme(t.name);
-            themesContainer.find(".selected")
-                .removeClass("selected")
-                .find(".preview-check").hide();
-            themeItem.find(".preview-check").show().css("color", "whitesmoke");
-            themeItem.addClass("selected");
-        });
+    // ✅ Still call your ThemeSwitcher to save preference
+    theme_switcher.toggle_theme(t.name);
+
+    themesContainer.find(".selected")
+        .removeClass("selected")
+        .find(".preview-check").hide();
+    themeItem.find(".preview-check").show().css("color", "whitesmoke");
+    themeItem.addClass("selected");
+});
+
 
         // Append to container
         themesContainer.append(themeItem);
@@ -334,7 +356,7 @@ let customColorCard = $(`
                 margin-bottom:10px;">Choose Color</span>
 
             <!-- Color Picker -->
-            <input type="color" id="custom-solid-color" value="#EDEDED" 
+            <input type="color" id="custom-solid-color" value="#000" 
                 style="width:60px; border-radius:50em;   height:34px; border:none; cursor:pointer; background:transparent;">
         </div>
 
@@ -488,7 +510,7 @@ function applyCustomColor(color) {
             --primary-hover: ${hover};
             --secondary: ${border};
             --secondary-hover: ${mutedHover};
-            --background: #ffffff;
+            --background: #000;
             --foreground: ${textColor};
             --muted: ${muted};
             --muted-hover: ${mutedHover};
@@ -743,7 +765,7 @@ $('#bg-image-picker').on('change', function(event) {
         $('#bg-image-preview').attr('src', filedata).fadeIn(300);
 
         // Apply to body
-        document.body.style.backgroundImage = `url(${filedata})`;
+        document.body.style.background = `url(${filedata}) !important`;
         document.body.style.backgroundSize = 'cover';
         document.body.style.backgroundRepeat = 'no-repeat';
         document.body.style.backgroundPosition = 'center';
@@ -785,10 +807,11 @@ function initBGImage() {
 
             if (savedBg) {
                 $('#bg-image-preview').attr('src', savedBg).show();
-                document.body.style.backgroundImage = `url(${savedBg})`;
-                document.body.style.backgroundSize = 'cover';
-                document.body.style.backgroundRepeat = 'no-repeat';
-                document.body.style.backgroundPosition = 'center';
+                  const style = document.createElement('style');
+                    style.innerHTML = `body { background-image: url(${savedBg}) !important; background-size: cover !important; background-repeat: no-repeat !important; background-position: center !important; }`;
+                    document.head.appendChild(style);
+                // document.body.style.backgroundImage = `url(${savedBg}) !important`;
+         
             }
 
             if (sticky) {

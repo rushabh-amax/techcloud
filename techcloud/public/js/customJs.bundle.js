@@ -1,5 +1,6 @@
+// =================================
 // from-tab sliding effect
-
+// =================================
 document.addEventListener('DOMContentLoaded', function () {
   function initSlidingTabs(ul) {
     if (!ul || ul.dataset.slidingTabsInitialized) return;
@@ -75,7 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// 
+// =================================
+// for add our custom awsome dropdown for child table
+// =================================
 document.addEventListener("DOMContentLoaded", function () {
   console.log("Awesomplete shift start");
 
@@ -120,5 +123,40 @@ document.addEventListener("DOMContentLoaded", function () {
     childList: true,
     subtree: true,
   });
+});
+
+
+
+
+
+// =================================
+// for add that theme button into navbar
+// =================================
+frappe.after_ajax(() => {
+    const checkNavbar = setInterval(() => {
+        let $userDropdown = $(".navbar .dropdown-navbar-user");
+
+        if ($userDropdown.length && !$("#theme-navbar-icon").length) {
+            clearInterval(checkNavbar);
+            console.log("Injecting theme icon near avatar...");
+
+            let svgIcon = `
+                <li id="theme-navbar-icon" class="nav-item" 
+                    style="display:flex;align-items:center;cursor:pointer;margin-right:8px;">
+                    <button class="btn-theme nav-item btn-reset nav-link" title="Theme Hub">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-palette-icon lucide-palette"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/></svg>
+                    </button>
+                </li>
+            `;
+
+            // Insert just before avatar dropdown
+            $userDropdown.before(svgIcon);
+
+            // Add click handler
+            $("#theme-navbar-icon").on("click", () => {
+                frappe.set_route("themes");
+            });
+        }
+    }, 300);
 });
 

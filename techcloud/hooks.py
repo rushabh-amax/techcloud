@@ -22,6 +22,7 @@ web_include_js = [
 ]
 
 home_page = "/modules"
+
 # Apps
 # ------------------
 
